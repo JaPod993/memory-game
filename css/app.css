@@ -92,7 +92,6 @@ h1 {
 }
 
 .score-panel .stars {
-    margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
@@ -106,4 +105,47 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+
+/*
+ * Styles for card images
+ */
+.svg {
+    display: block;
+    text-indent: -9999px;
+    width: 80px;
+    height: 80px;
+}
+
+.tiger {
+    background: url(../img/tiger.svg) no-repeat center;
+}
+
+.elephant {
+    background: url(../img/elephant.svg) no-repeat center;
+}
+
+.pig {
+    background: url(../img/pig.svg) no-repeat center;
+}
+
+.sheep {
+    background: url(../img/sheep.svg) no-repeat center;
+}
+
+.cow {
+     background: url(../img/cow.svg) no-repeat center;
+ }
+
+.cat {
+    background: url(../img/cat.svg) no-repeat center;
+}
+
+.dog {
+    background: url(../img/dog.svg) no-repeat center;
+}
+
+.zebra {
+    background: url(../img/zebra.svg) no-repeat center;
 }
