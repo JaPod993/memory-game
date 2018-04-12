@@ -15,7 +15,7 @@ function shuffle(array) {
     return array;
 }
 // list that holds all cards classes
-let cardList = ['tiger','elephant','pig','sheep','cow','cat','dog','zebra']
+let cards = ['tiger','elephant','pig','sheep','cow','cat','dog','zebra','tiger','elephant','pig','sheep','cow','cat','dog','zebra'];
 
 /*
  * Display the cards on the page
@@ -23,13 +23,27 @@ let cardList = ['tiger','elephant','pig','sheep','cow','cat','dog','zebra']
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
-const deck = document.querySelector(".deck");
+const deck = document.querySelector(".deck"); //selecting deck list
 const fragment = document.createDocumentFragment(); // DocumentFragment wrapper
-shuffle(cardList);
+shuffle(cards);
 
+//Creating card list
+function makeList() {
 
+    for(let card of cards) {
+        let elemLi = document.createElement('li');
+        elemLi.classList.add("card");
+        let elemI = document.createElement('i');
+        elemI.classList.add("svg",`${card}`);
+        elemLi.appendChild(elemI);
+        fragment.appendChild(elemLi);
+    }
+    deck.appendChild(fragment);
+}
 
+makeList();
 
+// classes open & show, match
 
 /*
  * set up the event listener for a card. If a card is clicked:
