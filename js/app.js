@@ -31,17 +31,29 @@ shuffle(cards);
 function makeList() {
 
     for(let card of cards) {
-        let elemLi = document.createElement('li');
-        elemLi.classList.add("card");
-        let elemI = document.createElement('i');
-        elemI.classList.add("svg",`${card}`);
-        elemLi.appendChild(elemI);
-        fragment.appendChild(elemLi);
+
+        let cardWrap = document.createElement('div');
+        cardWrap.classList.add("card-wrap");
+
+        let front = document.createElement('div');
+        front.classList.add("front","card");
+        cardWrap.appendChild(front);
+
+        let back = document.createElement('div');
+        back.classList.add("back","card");
+
+        let content = document.createElement('i');
+        content.classList.add("svg",`${card}`);
+        back.appendChild(content);
+
+        cardWrap.appendChild(back);
+
+        fragment.appendChild(cardWrap);
     }
     deck.appendChild(fragment);
 }
 
-// makeList();
+makeList();
 
 // classes open & show, match
 
