@@ -41,7 +41,7 @@ function makeList() {
     deck.appendChild(fragment);
 }
 
-makeList();
+// makeList();
 
 // classes open & show, match
 
