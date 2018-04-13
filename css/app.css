@@ -181,8 +181,8 @@ h1 {
 @media only screen and (max-width: 368px) {
 
     .deck {
-        width: 305px;
-        min-height: 305px;
+        width: 310px;
+        min-height: 310px;
         padding: 10px;
     }
 
