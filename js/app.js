@@ -17,20 +17,14 @@ function shuffle(array) {
 // list that holds all cards classes
 let cards = ['tiger','elephant','pig','sheep','cow','cat','dog','zebra','tiger','elephant','pig','sheep','cow','cat','dog','zebra'];
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+
 const deck = document.querySelector(".deck"); //selecting deck list
 const fragment = document.createDocumentFragment(); // DocumentFragment wrapper
-shuffle(cards);
 
 //Creating card list
 function makeList() {
-
-    for(let card of cards) {
+    deck.innerHTML ='';//cleaning card list
+    for(let card of shuffle(cards)) {
 
         let cardWrap = document.createElement('div');
         cardWrap.classList.add("card-wrap");
@@ -50,12 +44,10 @@ function makeList() {
 
         fragment.appendChild(cardWrap);
     }
+    //Adding cards
     deck.appendChild(fragment);
 }
-
 makeList();
-
-// classes open & show, match
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -67,3 +59,10 @@ makeList();
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+//Reset after button click
+const restart = document.querySelector(".restart");
+restart.addEventListener('click',function(e){
+    e.preventDefault();
+    makeList();
+});
