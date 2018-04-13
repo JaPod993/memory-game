@@ -38,8 +38,8 @@ h1 {
  */
 
 .deck {
-    //width: 660px;
-    //min-height: 680px;
+    width: 660px;
+    min-height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
     border-radius: 10px;
@@ -148,4 +148,50 @@ h1 {
 
 .zebra {
     background: url(../img/zebra.svg) no-repeat center;
+}
+
+@media only screen and (max-width: 680px) {
+
+    .deck {
+        width: 500px;
+        min-height: 500px;
+        padding: 25px;
+    }
+
+    .deck .card {
+        height: 100px;
+        width: 100px;
+    }
+}
+
+@media only screen and (max-width: 530px) {
+
+    .deck {
+        width: 350px;
+        min-height: 350px;
+        padding: 15px;
+    }
+
+    .deck .card {
+        height: 70px;
+        width: 70px;
+    }
+}
+
+@media only screen and (max-width: 368px) {
+
+    .deck {
+        width: 305px;
+        min-height: 305px;
+        padding: 10px;
+    }
+
+    .deck .card {
+        height: 65px;
+        width: 65px;
+    }
+
+    .score-panel {
+        width: 275px;
+    }
 }
