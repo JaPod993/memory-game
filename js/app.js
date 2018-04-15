@@ -26,7 +26,7 @@ function makeList() {
     deck.innerHTML ='';//cleaning card list
     for(let card of shuffle(cards)) {
 
-        let cardWrap = document.createElement('div');
+        let cardWrap = document.createElement('li');
         cardWrap.classList.add("card-wrap");
 
         let front = document.createElement('div');
@@ -47,7 +47,6 @@ function makeList() {
     //Adding cards
     deck.appendChild(fragment);
 }
-makeList();
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -66,3 +65,19 @@ restart.addEventListener('click',function(e){
     e.preventDefault();
     makeList();
 });
+
+const card = document
+
+function turn() {
+    deck.addEventListener('click', function(e){
+        e.preventDefault();
+        if(e.target.nodeName === 'li'){
+          let fronty =  e.target.querySelector(".front");
+          fronty.style.transform = 'perspective(600px) rotateY(-180deg)';
+            e.target.querySelector(".back").style.transform = 'perspective(600px) rotateY(0deg)';
+        }
+    });
+}
+
+makeList();
+turn();
