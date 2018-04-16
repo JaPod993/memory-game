@@ -29,11 +29,11 @@ function makeList() {
         let cardWrap = document.createElement('li');
         cardWrap.classList.add("card-wrap");
 
-        let front = document.createElement('div');
+        let front = document.createElement('span');
         front.classList.add("front","card");
         cardWrap.appendChild(front);
 
-        let back = document.createElement('div');
+        let back = document.createElement('span');
         back.classList.add("back","card");
 
         let content = document.createElement('i');
@@ -66,15 +66,12 @@ restart.addEventListener('click',function(e){
     makeList();
 });
 
-const card = document
-
 function turn() {
     deck.addEventListener('click', function(e){
         e.preventDefault();
-        if(e.target.nodeName === 'li'){
-          let fronty =  e.target.querySelector(".front");
-          fronty.style.transform = 'perspective(600px) rotateY(-180deg)';
-            e.target.querySelector(".back").style.transform = 'perspective(600px) rotateY(0deg)';
+        if(e.target.nodeName === 'SPAN'){
+            e.target.classList.add('open-front');
+            e.target.nextElementSibling.classList.add('open-back');
         }
     });
 }

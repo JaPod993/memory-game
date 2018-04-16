@@ -169,6 +169,14 @@ h1 {
     color: #02b3e4;
 }
 
+.open-front{
+    transform: perspective(600px) rotateY(-180deg)!important;
+}
+
+.open-back{
+    transform: perspective(600px) rotateY(0deg)!important;
+}
+
 @media only screen and (max-width: 680px) {
 
     .deck {
