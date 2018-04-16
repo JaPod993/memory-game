@@ -1,4 +1,8 @@
-
+// list that holds all cards classes
+let cards = ['tiger','elephant','pig','sheep','cow','cat','dog','zebra','tiger','elephant','pig','sheep','cow','cat','dog','zebra'];
+let openCards = [];
+const deck = document.querySelector(".deck"); //selecting deck list
+const fragment = document.createDocumentFragment(); // DocumentFragment wrapper
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -14,12 +18,6 @@ function shuffle(array) {
 
     return array;
 }
-// list that holds all cards classes
-let cards = ['tiger','elephant','pig','sheep','cow','cat','dog','zebra','tiger','elephant','pig','sheep','cow','cat','dog','zebra'];
-
-
-const deck = document.querySelector(".deck"); //selecting deck list
-const fragment = document.createDocumentFragment(); // DocumentFragment wrapper
 
 //Creating card list
 function makeList() {
@@ -66,12 +64,14 @@ restart.addEventListener('click',function(e){
     makeList();
 });
 
+//listen for click and flip card
 function turn() {
     deck.addEventListener('click', function(e){
         e.preventDefault();
         if(e.target.nodeName === 'SPAN'){
             e.target.classList.add('open-front');
             e.target.nextElementSibling.classList.add('open-back');
+            openCards.push(e.target);
         }
     });
 }
