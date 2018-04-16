@@ -71,9 +71,14 @@ function turn() {
         if(e.target.nodeName === 'SPAN'){
             e.target.classList.add('open-front');
             e.target.nextElementSibling.classList.add('open-back');
-            openCards.push(e.target);
+            cardList(e.target);
         }
     });
+}
+
+//adding open cards to list
+function cardList(target) {
+    openCards.push(target);
 }
 
 makeList();
