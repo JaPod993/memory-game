@@ -48,8 +48,8 @@ function makeList() {
 
 /*
  * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+ * ------ - display the card's symbol (put this functionality in another function that you call from this one)
+ * ------ - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  *  - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
@@ -72,6 +72,8 @@ function turn() {
             e.target.classList.add('open-front');
             e.target.nextElementSibling.classList.add('open-back');
             cardList(e.target);
+            match();
+
         }
     });
 }
@@ -79,6 +81,20 @@ function turn() {
 //adding open cards to list
 function cardList(target) {
     openCards.push(target);
+}
+
+//checking if cards match
+function match() {
+    if (openCards.length == 2){
+        let firstCard = openCards[0].nextElementSibling.childNodes[0];
+        let secondCard = openCards[1].nextElementSibling.childNodes[0];
+        //adding match class cards that are the same
+        if (firstCard.classList[1] == secondCard.classList[1]) {
+            firstCard.classList.add('match');
+            secondCard.classList.add('match');
+        }
+        openCards = [];
+    }
 }
 
 makeList();
