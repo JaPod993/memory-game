@@ -3,6 +3,7 @@ let cards = ['tiger','elephant','pig','sheep','cow','cat','dog','zebra','tiger',
 let openCards = [];
 const deck = document.querySelector(".deck"); //selecting deck list
 const fragment = document.createDocumentFragment(); // DocumentFragment wrapper
+const moveCounter = document.querySelector(".moves"); //select moves counter
 let moves = 0; //moves counter
 let pairs = 0; //matched pairs counter
 
@@ -64,6 +65,8 @@ const restart = document.querySelector(".restart");
 restart.addEventListener('click',function(e){
     e.preventDefault();
     makeList();
+    moves = 0;
+    moveCounter.textContent = moves;
 });
 
 //listen for click and flip card
@@ -97,7 +100,6 @@ function match(target) {
     flip(target);
     if (openCards.length == 2){
         moves += 1; //adding move
-        const moveCounter = document.querySelector(".moves");
         moveCounter.textContent = moves;
         let firstCard = openCards[0].nextElementSibling.childNodes[0];
         let secondCard = openCards[1].nextElementSibling.childNodes[0];
