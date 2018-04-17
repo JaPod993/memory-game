@@ -4,6 +4,9 @@ let openCards = [];
 const deck = document.querySelector(".deck"); //selecting deck list
 const fragment = document.createDocumentFragment(); // DocumentFragment wrapper
 const moveCounter = document.querySelector(".moves"); //select moves counter
+const firstStar = document.querySelector(".first-star"); //firstStar
+const secondStar = document.querySelector(".second-star"); //secondStar
+const thirdStar = document.querySelector(".third-star"); //thirdStar
 let moves = 0; //moves counter
 let pairs = 0; //matched pairs counter
 
@@ -67,6 +70,9 @@ restart.addEventListener('click',function(e){
     makeList();
     moves = 0;
     moveCounter.textContent = moves;
+    firstStar.className = 'first-star fa fa-star';
+    secondStar.className = 'second-star fa fa-star';
+    thirdStar.className = 'third-star fa fa-star';
 });
 
 //listen for click and flip card
@@ -74,9 +80,8 @@ function turn() {
     deck.addEventListener('click', function(e){
         e.preventDefault();
         if(e.target.nodeName === 'SPAN'){
-            cardList(e.target);
-            match(e.target);
-
+                cardList(e.target);
+                match(e.target);
         }
     });
 }
@@ -91,28 +96,49 @@ function flip(target){
     target.classList.add('open-front');
     target.nextElementSibling.classList.add('open-back', 'animated');
 }
-function goodMatch() {
+
+//Star rating function for removing stars when moves counter is increasing
+function starRating (m){
+    if (m >= 10 && m < 12 ){
+        firstStar.classList.remove('fa-star');
+        firstStar.classList.add('fa-star-half-o');
+    } else if (m >= 12 && m < 14){
+        firstStar.classList.remove('fa-star-half-o');
+        firstStar.classList.add('fa-star-o');
+    } else if(m >= 14 && m < 16){
+        secondStar.classList.remove('fa-star');
+        secondStar.classList.add('fa-star-half-o');
+    } else if(m >= 16 && m < 18){
+        secondStar.classList.remove('fa-star-half-o');
+        secondStar.classList.add('fa-star-o');
+    } else if(m >= 18 && m < 20){
+        thirdStar.classList.remove('fa-star');
+        thirdStar.classList.add('fa-star-half-o');
+    } else if(m >= 20){
+        thirdStar.classList.remove('fa-star-half-o');
+        thirdStar.classList.add('fa-star-o');
+    }
 
 }
 
 //checking if cards match
 function match(target) {
     flip(target);
-    if (openCards.length == 2){
+    if (openCards.length === 2){
         moves += 1; //adding move
         moveCounter.textContent = moves;
+        starRating(moves);
         let firstCard = openCards[0].nextElementSibling.childNodes[0];
         let secondCard = openCards[1].nextElementSibling.childNodes[0];
         //adding match class to cards that are the same
-        if (firstCard.classList[1] == secondCard.classList[1]) {
+        if (firstCard.classList[1] === secondCard.classList[1]) {
             pairs += 1; //adding matched pairs
             setTimeout(function(){
                 firstCard.parentNode.classList.add('match', 'pulse');
                 secondCard.parentNode.classList.add('match', 'pulse');
             }, 400);
-
         //turning cards back
-        } else if (firstCard.classList[1] != secondCard.classList[1]){
+        } else if (firstCard.classList[1] !== secondCard.classList[1]){
             setTimeout(function(){
                 firstCard.parentNode.classList.remove('open-back');
                 firstCard.parentNode.previousSibling.classList.remove('open-front');
