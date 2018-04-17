@@ -63,11 +63,6 @@ h1 {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
-.match {
-    cursor: default;
-    background: #02ccba;
-}
-
 /*
  * Styles for the Score Panel
  */
@@ -172,9 +167,20 @@ h1 {
 .open-front{
     transform: perspective(600px) rotateY(-180deg)!important;
 }
+.close-front{
+    transform: perspective(600px) rotateY(0deg)!important;
+}
 
 .open-back{
     transform: perspective(600px) rotateY(0deg)!important;
+}
+.close-back{
+    transform: perspective(600px) rotateY(180deg)!important;
+}
+
+.match {
+    cursor: default!important;
+    background: #02ccba!important;
 }
 
 @media only screen and (max-width: 680px) {

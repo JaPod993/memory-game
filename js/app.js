@@ -3,6 +3,8 @@ let cards = ['tiger','elephant','pig','sheep','cow','cat','dog','zebra','tiger',
 let openCards = [];
 const deck = document.querySelector(".deck"); //selecting deck list
 const fragment = document.createDocumentFragment(); // DocumentFragment wrapper
+let moves = 0; //moves counter
+let pairs = 0; //matched pairs counter
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -50,10 +52,10 @@ function makeList() {
  * set up the event listener for a card. If a card is clicked:
  * ------ - display the card's symbol (put this functionality in another function that you call from this one)
  * ------ - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+ * ------ - if the list already has another card, check to see if the two cards match
+ * ------ - if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+ * ------ - if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+ * ------ - increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
@@ -69,10 +71,8 @@ function turn() {
     deck.addEventListener('click', function(e){
         e.preventDefault();
         if(e.target.nodeName === 'SPAN'){
-            e.target.classList.add('open-front');
-            e.target.nextElementSibling.classList.add('open-back');
             cardList(e.target);
-            match();
+            match(e.target);
 
         }
     });
@@ -83,19 +83,44 @@ function cardList(target) {
     openCards.push(target);
 }
 
-//checking if cards match
-function match() {
-    if (openCards.length == 2){
-        let firstCard = openCards[0].nextElementSibling.childNodes[0];
-        let secondCard = openCards[1].nextElementSibling.childNodes[0];
-        //adding match class cards that are the same
-        if (firstCard.classList[1] == secondCard.classList[1]) {
-            firstCard.classList.add('match');
-            secondCard.classList.add('match');
-        }
-        openCards = [];
-    }
+//flipping cards function
+function flip(target){
+    target.classList.add('open-front');
+    target.nextElementSibling.classList.add('open-back', 'animated');
+}
+function goodMatch() {
+
 }
 
+//checking if cards match
+function match(target) {
+    flip(target);
+    if (openCards.length == 2){
+        moves += 1; //adding move
+        const moveCounter = document.querySelector(".moves");
+        moveCounter.textContent = moves;
+        let firstCard = openCards[0].nextElementSibling.childNodes[0];
+        let secondCard = openCards[1].nextElementSibling.childNodes[0];
+        //adding match class to cards that are the same
+        if (firstCard.classList[1] == secondCard.classList[1]) {
+            pairs += 1; //adding matched pairs
+            setTimeout(function(){
+                firstCard.parentNode.classList.add('match', 'pulse');
+                secondCard.parentNode.classList.add('match', 'pulse');
+            }, 400);
+
+        //turning cards back
+        } else if (firstCard.classList[1] != secondCard.classList[1]){
+            setTimeout(function(){
+                firstCard.parentNode.classList.remove('open-back');
+                firstCard.parentNode.previousSibling.classList.remove('open-front');
+                secondCard.parentNode.classList.remove('open-back');
+                secondCard.parentNode.previousSibling.classList.remove('open-front');
+            }, 1000);
+        }
+       openCards = [];
+    }
+}
 makeList();
 turn();
+
