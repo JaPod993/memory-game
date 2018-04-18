@@ -7,6 +7,8 @@ const moveCounter = document.querySelector(".moves"); //select moves counter
 const firstStar = document.querySelector(".first-star"); //firstStar
 const secondStar = document.querySelector(".second-star"); //secondStar
 const thirdStar = document.querySelector(".third-star"); //thirdStar
+const modal = document.getElementById("myModal"); //modal
+const newGame = document.querySelector(".new-game"); //new game button
 let moves = 0; //moves counter
 let pairs = 0; //matched pairs counter
 
@@ -59,31 +61,35 @@ function makeList() {
     deck.appendChild(fragment);
 }
 
-/*
- * set up the event listener for a card. If a card is clicked:
- * ------ - display the card's symbol (put this functionality in another function that you call from this one)
- * ------ - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- * ------ - if the list already has another card, check to see if the two cards match
- * ------ - if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- * ------ - if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- * ------ - increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
-
 //Reset after button click
 const restart = document.querySelector(".restart");
-restart.addEventListener('click', function (e) {
+restart.addEventListener('click', function(e) {
     e.preventDefault();
+    resetAll();
+});
+
+//new game
+function nextGame() {
+    newGame.addEventListener('click', function(e){
+        e.preventDefault();
+        resetAll();
+        modal.style.display = "none";
+    });
+}
+
+//restart function
+function resetAll() {
     makeList();
     resetMoves();
     resetStars();
     resetTimer();
-});
+}
 
 //reset moves
 function resetMoves() {
     moves = 0;
     moveCounter.textContent = moves;
+    pairs = 0;
 }
 
 //reset stars
@@ -173,11 +179,27 @@ function buildTimer() {
 
 function stopGame() {
     if (pairs === 8) {
-        console.log("YOU WON")
         clearInterval(t);
-
+        // When the user clicks on the button, open the modal
+        modal.style.display = "block";
+        nextGame();
     }
 }
+
+// Get the <span> element that closes the modal
+const span = document.querySelector(".close");
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
 
 //checking if cards match
 function match(target) {
