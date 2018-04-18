@@ -184,6 +184,11 @@ h1 {
     background: #02ccba!important;
 }
 
+.stars,
+.timer {
+    padding-right: 30px!important;
+}
+
 @media only screen and (max-width: 680px) {
 
     .deck {
@@ -220,6 +225,11 @@ h1 {
 }
 
 @media only screen and (max-width: 368px) {
+
+    .stars,
+    .timer {
+        padding-right: 15px!important;
+    }
 
     .deck {
         width: 310px;
