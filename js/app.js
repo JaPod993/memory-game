@@ -3,25 +3,26 @@ let cards = ['tiger', 'elephant', 'pig', 'sheep', 'cow', 'cat', 'dog', 'zebra', 
 let openCards = [];
 const deck = document.querySelector(".deck"); //selecting deck list
 const fragment = document.createDocumentFragment(); // DocumentFragment wrapper
+const fragmentSecond = document.createDocumentFragment(); // DocumentFragment wrapper
 const moveCounter = document.querySelector(".moves"); //select moves counter
 const firstStar = document.querySelector(".first-star"); //firstStar
 const secondStar = document.querySelector(".second-star"); //secondStar
 const thirdStar = document.querySelector(".third-star"); //thirdStar
 const modal = document.getElementById("myModal"); //modal
 const newGame = document.querySelector(".new-game"); //new game button
+const yourScore = document.querySelector(".your-score");
+const timer = document.querySelector('.timer');
 let moves = 0; //moves counter
 let pairs = 0; //matched pairs counter
-
-let time = '00:00'
+let time = '00:00';
 let seconds = 0;
 let minutes = 0;
 let timeTiger = 0;
 let t;
-const timer = document.querySelector('.timer');
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -30,7 +31,6 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 
@@ -63,14 +63,14 @@ function makeList() {
 
 //Reset after button click
 const restart = document.querySelector(".restart");
-restart.addEventListener('click', function(e) {
+restart.addEventListener('click', function (e) {
     e.preventDefault();
     resetAll();
 });
 
 //new game
 function nextGame() {
-    newGame.addEventListener('click', function(e){
+    newGame.addEventListener('click', function (e) {
         e.preventDefault();
         resetAll();
         modal.style.display = "none";
@@ -83,6 +83,7 @@ function resetAll() {
     resetMoves();
     resetStars();
     resetTimer();
+    yourScore.innerHTML = "";
 }
 
 //reset moves
@@ -104,6 +105,7 @@ function resetTimer() {
     clearInterval(t);
     seconds = 0;
     minutes = 0;
+    timeTiger = 0;
     timer.textContent = time;
 }
 
@@ -111,7 +113,7 @@ function resetTimer() {
 function turn() {
     deck.addEventListener('click', function (e) {
         e.preventDefault();
-        timeTiger++
+        timeTiger++;
         if (timeTiger === 1) {
             startTimer();
         }
@@ -160,9 +162,8 @@ function starRating(m) {
 function startTimer() {
     clearInterval(t);
     t = setInterval(buildTimer, 1000);
+    timer.textContent = time;
 }
-
-timer.textContent = time;
 
 function buildTimer() {
     seconds++;
@@ -178,12 +179,61 @@ function buildTimer() {
 }
 
 function stopGame() {
-    if (pairs === 8) {
+    if (pairs === 1) {
         clearInterval(t);
         // When the user clicks on the button, open the modal
         modal.style.display = "block";
+        ScoreCreate();
         nextGame();
     }
+}
+
+// creating score
+function ScoreCreate() {
+    let starList = document.createElement('ul');
+    starList.classList.add("stars-score");
+
+    let firstLi = document.createElement('li');
+    let firstScore = document.createElement('i');
+    firstScore.classList.add("fa", thirdStar.classList[2]);
+    firstLi.appendChild(firstScore);
+
+    let secondLi = document.createElement('li');
+    let secondScore = document.createElement('i');
+    secondScore.classList.add("fa", secondStar.classList[2]);
+    secondLi.appendChild(secondScore);
+
+    let thirdLi = document.createElement('li');
+    let thirdScore = document.createElement('i');
+    thirdScore.classList.add("fa", firstStar.classList[2]);
+    thirdLi.appendChild(thirdScore);
+
+    starList.appendChild(firstLi);
+    starList.appendChild(secondLi);
+    starList.appendChild(thirdLi);
+
+    let timerTitle = document.createElement('span');
+    timerTitle.classList.add("timer-score-title");
+    timerTitle.textContent = "Time: ";
+
+    let timerScore = document.createElement('span');
+    timerScore.classList.add("timer-score");
+    timerScore.textContent = timer.textContent;
+
+    let movesTitle = document.createElement('span');
+    movesTitle.classList.add("moves-score-title");
+    movesTitle.textContent = "Moves: ";
+
+    let movesScore = document.createElement('span');
+    movesScore.classList.add("moves-score");
+    movesScore.textContent = moveCounter.textContent;
+
+    fragmentSecond.appendChild(starList);
+    fragmentSecond.appendChild(timerTitle);
+    fragmentSecond.appendChild(timerScore);
+    fragmentSecond.appendChild(movesTitle);
+    fragmentSecond.appendChild(movesScore);
+    yourScore.appendChild(fragmentSecond);
 }
 
 // Get the <span> element that closes the modal
@@ -233,4 +283,3 @@ function match(target) {
 
 makeList();
 turn();
-
