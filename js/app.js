@@ -111,18 +111,20 @@ function resetTimer() {
 
 //listen for click and flip card
 function turn() {
-    deck.addEventListener('click', function (e) {
-        e.preventDefault();
+    deck.addEventListener('click', click);
+}
 
-        if (e.target.nodeName === 'SPAN') {
-            timeTiger++;
-            if (timeTiger === 1) {
-                startTimer();
-            }
-            cardList(e.target);
-            match(e.target);
+let click = function click(e) {
+    e.preventDefault();
+
+    if (e.target.nodeName === 'SPAN') {
+        timeTiger++;
+        if (timeTiger === 1) {
+            startTimer();
         }
-    });
+        cardList(e.target);
+        match(e.target);
+    }
 }
 
 //adding open cards to list
@@ -254,8 +256,10 @@ window.onclick = function (event) {
 
 //checking if cards match
 function match(target) {
+
     flip(target);
     if (openCards.length === 2) {
+
         moves += 1; //adding move
         moveCounter.textContent = moves;
         starRating(moves);
@@ -279,6 +283,10 @@ function match(target) {
         }
         openCards = [];
         stopGame();
+        deck.removeEventListener('click', click);
+        setTimeout(function () {
+            turn();
+        }, 800);
     }
 }
 
