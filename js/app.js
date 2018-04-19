@@ -113,11 +113,12 @@ function resetTimer() {
 function turn() {
     deck.addEventListener('click', function (e) {
         e.preventDefault();
-        timeTiger++;
-        if (timeTiger === 1 && e.target.nodeName === 'SPAN') {
-            startTimer();
-        }
+
         if (e.target.nodeName === 'SPAN') {
+            timeTiger++;
+            if (timeTiger === 1) {
+                startTimer();
+            }
             cardList(e.target);
             match(e.target);
         }
