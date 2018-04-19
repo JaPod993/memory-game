@@ -179,7 +179,7 @@ function buildTimer() {
 }
 
 function stopGame() {
-    if (pairs === 8) {
+    if (pairs === 1) {
         clearInterval(t);
         // When the user clicks on the button, open the modal
         modal.style.display = "block";

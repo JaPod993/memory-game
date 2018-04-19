@@ -367,6 +367,12 @@ button:active:before {
     border-color: #aa7ecd54;
 }
 
+@media only screen and (max-width: 1200px) {
+    .modal-content {
+        width: 50%;
+    }
+}
+
 @media only screen and (max-width: 680px) {
 
     .deck {
@@ -379,6 +385,10 @@ button:active:before {
     .card {
         height: 100px !important;
         width: 100px !important;
+    }
+
+    .modal-content {
+        width: 80%;
     }
 }
 
@@ -423,5 +433,9 @@ button:active:before {
 
     .score-panel {
         width: 275px;
+    }
+
+    .modal-content {
+        width: 90%;
     }
 }
