@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01ebb79c-6a26-464b-a424-704f38d2eba3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/app.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -17,20 +16,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="369" column="39" selection-start-line="369" selection-start-column="39" selection-end-line="369" selection-end-column="39" />
+            <state relative-caret-position="738">
+              <caret line="438" column="16" selection-start-line="438" selection-start-column="16" selection-end-line="438" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="181" column="22" lean-forward="true" selection-start-line="181" selection-start-column="22" selection-end-line="181" selection-end-column="22" />
+            <state relative-caret-position="296">
+              <caret line="119" column="13" lean-forward="true" selection-start-line="119" selection-start-column="13" selection-end-line="119" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -63,9 +62,9 @@
       <find>getElemen</find>
       <find>console</find>
       <find>tim</find>
-      <find>modal</find>
       <find>time</find>
       <find>startTimer</find>
+      <find>modal</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -75,8 +74,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/app.js" />
         <option value="$PROJECT_DIR$/css/app.css" />
+        <option value="$PROJECT_DIR$/js/app.js" />
       </list>
     </option>
   </component>
@@ -137,12 +136,12 @@
       <workItem from="1523865513832" duration="14479000" />
       <workItem from="1523947200856" duration="9680000" />
       <workItem from="1523992962318" duration="2702000" />
-      <workItem from="1524063597030" duration="17103000" />
+      <workItem from="1524063597030" duration="17693000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74724000" />
+    <option name="totallyTimeSpent" value="75314000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -319,17 +318,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/app.js">
+    <entry file="file://$PROJECT_DIR$/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="181" column="22" lean-forward="true" selection-start-line="181" selection-start-column="22" selection-end-line="181" selection-end-column="22" />
+        <state relative-caret-position="738">
+          <caret line="438" column="16" selection-start-line="438" selection-start-column="16" selection-end-line="438" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/app.css">
+    <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="369" column="39" selection-start-line="369" selection-start-column="39" selection-end-line="369" selection-end-column="39" />
+        <state relative-caret-position="296">
+          <caret line="119" column="13" lean-forward="true" selection-start-line="119" selection-start-column="13" selection-end-line="119" selection-end-column="13" />
         </state>
       </provider>
     </entry>

@@ -114,7 +114,7 @@ function turn() {
     deck.addEventListener('click', function (e) {
         e.preventDefault();
         timeTiger++;
-        if (timeTiger === 1) {
+        if (timeTiger === 1 && e.target.nodeName === 'SPAN') {
             startTimer();
         }
         if (e.target.nodeName === 'SPAN') {
@@ -179,7 +179,7 @@ function buildTimer() {
 }
 
 function stopGame() {
-    if (pairs === 1) {
+    if (pairs === 8) {
         clearInterval(t);
         // When the user clicks on the button, open the modal
         modal.style.display = "block";
