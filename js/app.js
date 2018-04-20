@@ -140,22 +140,22 @@ function flip(target) {
 
 //Star rating function for removing stars when moves counter is increasing
 function starRating(m) {
-    if (m >= 10 && m < 12) {
+    if (m >= 12 && m < 15) {
         firstStar.classList.remove('fa-star');
         firstStar.classList.add('fa-star-half-o');
-    } else if (m >= 12 && m < 14) {
+    } else if (m >= 15 && m < 16) {
         firstStar.classList.remove('fa-star-half-o');
         firstStar.classList.add('fa-star-o');
-    } else if (m >= 14 && m < 16) {
+    } else if (m >= 16 && m < 18) {
         secondStar.classList.remove('fa-star');
         secondStar.classList.add('fa-star-half-o');
-    } else if (m >= 16 && m < 18) {
+    } else if (m >= 18 && m < 20) {
         secondStar.classList.remove('fa-star-half-o');
         secondStar.classList.add('fa-star-o');
-    } else if (m >= 18 && m < 20) {
+    } else if (m >= 20 && m < 22) {
         thirdStar.classList.remove('fa-star');
         thirdStar.classList.add('fa-star-half-o');
-    } else if (m >= 20) {
+    } else if (m >= 22) {
         thirdStar.classList.remove('fa-star-half-o');
         thirdStar.classList.add('fa-star-o');
     }
